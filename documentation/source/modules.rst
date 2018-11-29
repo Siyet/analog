@@ -1,8 +1,0 @@
-analog
-======
-
-.. toctree::
-   :maxdepth: 4
-
-   catalog
-   core
