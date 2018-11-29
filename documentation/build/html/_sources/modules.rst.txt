@@ -6,4 +6,3 @@ analog
 
    catalog
    core
-   manage
