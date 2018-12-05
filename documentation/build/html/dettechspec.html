@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Частное техническое задание на разработку Системы Analog &mdash; Документация Система Analog 0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Исходный код" href="modules.html" />
+    <link rel="prev" title="Техническое задание на разработку Системы Analog" href="techspec.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Система Analog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Оглавление:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Система Analog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techspec.html">Техническое задание на разработку Системы Analog</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Частное техническое задание на разработку Системы Analog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Определения, сокращения и аббревиатуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Общие сведения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Архитектура</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Сущности</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Представления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Роли</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Справочники и классификаторы</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Исходный код</a></li>
+</ul>
+
+            
+          
+<a href="genindex.html">Алфавитный указатель</a>
+<a href="py-modindex.html">Состав модулей</a>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Система Analog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Частное техническое задание на разработку Системы Analog</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dettechspec.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="analog">
+<h1>Частное техническое задание на разработку Системы Analog<a class="headerlink" href="#analog" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>Определения, сокращения и аббревиатуры<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="29%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Аббревиатура</th>
+<th class="head">Термин</th>
+<th class="head">Определение</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#160;</td>
+<td>Сущность</td>
+<td>Тип сведений, хранящихся в Базе
+данных, имеющих одинаковые по
+структуре свойства (поля)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>Экземпляр сущности</td>
+<td>Уникально идентифицируемая единица
+сведений, хранящихся в БД,
+относящаяся к какой-либо из
+сущностей Системы</td>
+</tr>
+<tr class="row-even"><td>CRUD</td>
+<td>create, read,
+update, delete —
+«создать, прочесть,
+обновить, удалить»</td>
+<td><p class="first">акроним, обозначающий четыре
+базовые функции, используемые при
+работе с персистентными хранилищами
+данных:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>создание;</li>
+<li>чтение;</li>
+<li>редактирование;</li>
+<li>удаление.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>Общие сведения<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Система <strong>Analog</strong> служит для подбора аналогов позиций спецификации
+предложений товаров, а также для учета производителей, товаров,
+предложений производителей и т. д.</p>
+</div>
+<div class="section" id="id3">
+<h2>Бизнес-процессы<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="docutils">
+<dt>Ведение экземпляров сущностей</dt>
+<dd><ol class="first arabic simple">
+<li>Пользователь с правами Администратора авторизуется в панели Администратора</li>
+<li>Открывает табличное представление справочника, в который требуется внести изменение</li>
+<li>Внесение изменений:</li>
+</ol>
+<blockquote class="last">
+<div><ol class="arabic simple">
+<li>Пользователь прямо из табличного представления удаляет одну или несколько записей, удаление перемещает запись в архив</li>
+<li>Для добавления записи пользователь нажимает соответствующую кнопку в табличном представлении, переходит на страницу карточки экземпляра сущности, заполняет ее и нажимает сохранить</li>
+<li>Для редактирования записи, пользователь находит ее в таблице, открывает карточку данной записи, вносит изменения и нажимает кнопку сохранить.</li>
+</ol>
+</div></blockquote>
+</dd>
+<dt>Подбор аналогов</dt>
+<dd><ol class="first arabic simple">
+<li>Пользователь авторизуется в системе</li>
+<li>Выбирает пункт меню – загрузить спецификацию. Открывается окно с выбором файла для загрузки. После нажатия ОК, появляется форма, в которой необходимо выбрать производителя, на котором сделана загружаемая спецификация. Производитель выбирается из выпадающего списка. Подтверждается нажатием ОК.</li>
+<li>Внесение параметров подбора: После загрузки спецификации и выбора производителя, появляется окно с формой запроса параметров подбора спецификации-аналога.</li>
+</ol>
+<blockquote>
+<div><p>Форма состоит из трех частей.</p>
+<p>Первая часть. «автоматический подбор». Из выпадающего списка выбирается производитель, на котором будет сделана исходящая спецификация.  Внизу формы две кнопки – Атрибуты и ОК. при выборе ОК – начинается подбор.</p>
+<p>Атрибуты – расширение формы вниз. Вторая часть. Форма динамическая! В этой части формы – перечень «мягких» атрибутов для каждого класса. Напротив каждого атрибута – значение по умолчанию с выпадающим списком возможных вариантов выбора. В форму выбираются только те атрибуты тех классов, товары которых есть во входной спецификации. «Лишние» классы и атрибуты  выводиться в форме не должны. Возможно разделение по классам для простоты понимания.</p>
+<p>Галочка к атрибуту «пересчет»</p>
+<p>Внизу также кнопки – Доп.атрибуты и ОК. при выборе ОК – начинается подбор.</p>
+<p>Доп.Атрибуты – еще расширение формы вниз. Третья часть. В этой части формы – перечень «жестких» атрибутов для каждого класса. Форма также динамическая. Напротив каждого атрибута – значение по умолчанию с выпадающим списком возможных вариантов выбора.</p>
+<dl class="docutils">
+<dt>Алгоритм поиска замены</dt>
+<dd><p class="first">Загруженная спецификация отрабатывается построчно. Каждой строке в выходной спецификации должна соответствовать строка исходной спецификации.</p>
+<p>Для каждого артикула i-той строки исходной спецификации производится поиск записи в БД.  В случае, если артикула исходн.спецификации в БД нет – в этой строке выходной спецификации указывается – артикул в БД не найден.</p>
+<p>Если артикул найден, то с учетом данных найденной записи производится поиск записи аналога. Поиск производится с учетом того, что поля Класс, Тип должны полностью совпадать с параметрами записи исходной позиции, поле Производитель – с наименованием Производителя выбранном в форме запроса.</p>
+<dl class="docutils">
+<dt>Поиск и выбор среди атрибутов:</dt>
+<dd>поиск по атрибутам производится последовательно. Т.е. первый атрибут имеет больший приоритет перед последующим. Для жестких атрибутов требуется полное совпадение значений с исходной записью, если иное не указано в форме запроса. Для мягких атрибутов совпадения ищутся исходя параметров по умолчанию, если иное не указано в форме запроса.</dd>
+</dl>
+<p>После выбора позиции производится анализ атрибутов Пересчет, Взаимосвязь и Цена. Для атрибута Пересчет должен производится пересчет количества с округлением вверх до целого элемента.</p>
+<p>Выходная спецификация должна быть составлена в тех же ед.измерения, что и входная</p>
+<img alt="_images/Алгоритм.jpg" class="last" src="_images/Алгоритм.jpg" />
+</dd>
+</dl>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Сохранение результатов</li>
+</ol>
+<blockquote class="last">
+<div><p>После проведения поиска у пользователя запрашивается место для сохранения файла с результатом. Результат сохраняется в формате эксель. Столбцы – номер п/п, артикул, наименование, кол-во, ед.изм.</p>
+<p>В выходной спецификации на каждый элемент исходной спецификации должен быть представлен аналогичный элемент в выходной спецификации (с учетом параметров «взаимосвязь» общее количество элементов может незначительно отличаться). На один элемент исходной спецификации НЕ может быть представлено несколько вариантов в выходной спецификации</p>
+<p>Пользователь может определять формат вывода информации – указывать какие столбцы должны быть в «выходной» спецификации.</p>
+<p>В БД должны сохраняться все произведенные подборы в формате – «исходная спецификация – выходная спецификация» – с возможностью выгрузки для администратора единой совмещенной таблицы для удобного анализа – что было на входе, что стало на выходе.</p>
+</div></blockquote>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>Архитектура<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>Сущности<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic simple">
+<li>Производитель</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Наименование</li>
+<li>Синонимы</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Класс</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Наименование</li>
+<li>Виды/типы</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Вид/тип</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Наименование</li>
+<li>Принадлежность к классу</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Атрибут</li>
+<li>Значение атрибута</li>
+<li>Товар</li>
+<li>Предложение</li>
+<li>Спецификация</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h2>Представления<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="id7">
+<h2>Роли<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="docutils">
+<dt>Администратор</dt>
+<dd>Пользователь, имеющий CRUD права сущности и их экземпляры</dd>
+<dt>Менеджер</dt>
+<dd>Пользователь, имеющий права на создание и редактирование спецификаций</dd>
+</dl>
+</div>
+<div class="section" id="id8">
+<h2>Справочники и классификаторы<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="docutils">
+<dt>Производители</dt>
+<dd><ul class="first last simple">
+<li>A</li>
+<li>XX</li>
+</ul>
+</dd>
+<dt>Классы</dt>
+<dd><ul class="first last simple">
+<li>ШП</li>
+<li>КНС</li>
+</ul>
+</dd>
+<dt>Виды/типы</dt>
+<dd><ul class="first last simple">
+<li>ШП<ul>
+<li>Поворотный модуль</li>
+</ul>
+</li>
+<li>КНС<ul>
+<li>Прямая секция</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt>Атрибуты</dt>
+<dd><ul class="first last">
+<li><p class="first">КНС/Прямая секция</p>
+<ol class="upperalpha simple">
+<li>Жесткие</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Вид</li>
+<li>Покрытие</li>
+<li>Ширина, мм</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="2">
+<li>Мягкие</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Толщина, мм</li>
+<li>Высота борта, мм</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="3">
+<li>Пересчет</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Длина, мм</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="4">
+<li>Взаимосвязь</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Крепление</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="5">
+<li>Цена</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>руб.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">ШП/Поворотный модуль</p>
+<ol class="upperalpha simple">
+<li>Жесткие</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Вид</li>
+<li>Проводник</li>
+<li>Номинал, А</li>
+<li>Количество проводников</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="2">
+<li>Мягкие</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Корпус</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="3">
+<li>Пересчет</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Длина, мм</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="5">
+<li>Цена</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>руб.</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="Исходный код" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="techspec.html" class="btn btn-neutral" title="Техническое задание на разработку Системы Analog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Alexander Tseluyko
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

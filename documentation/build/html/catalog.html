@@ -82,6 +82,8 @@
               <p class="caption"><span class="caption-text">Оглавление:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="readme.html">Система Analog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techspec.html">Техническое задание на разработку Системы Analog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dettechspec.html">Частное техническое задание на разработку Системы Analog</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">Исходный код</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">catalog package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
@@ -189,6 +191,24 @@
 </div>
 <div class="section" id="module-catalog.admin">
 <span id="catalog-admin-module"></span><h2>catalog.admin module<a class="headerlink" href="#module-catalog.admin" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="class">
+<dt id="catalog.admin.BaseAdmin">
+<em class="property">class </em><code class="descclassname">catalog.admin.</code><code class="descname">BaseAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/admin.html#BaseAdmin"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.admin.BaseAdmin" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></div></blockquote>
+<dl class="attribute">
+<dt id="catalog.admin.BaseAdmin.media">
+<code class="descname">media</code><a class="headerlink" href="#catalog.admin.BaseAdmin.media" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="catalog.admin.BaseAdmin.save_model">
+<code class="descname">save_model</code><span class="sig-paren">(</span><em>request</em>, <em>instance</em>, <em>form</em>, <em>change</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/admin.html#BaseAdmin.save_model"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.admin.BaseAdmin.save_model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Given a model instance save it to the database.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-catalog.apps">
 <span id="catalog-apps-module"></span><h2>catalog.apps module<a class="headerlink" href="#module-catalog.apps" title="Ссылка на этот заголовок">¶</a></h2>
@@ -706,6 +726,13 @@ many-to-one relation.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
 <p>Most of the implementation is delegated to a dynamically defined manager
 class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.models.Category.synonyms">
+<code class="descname">synonyms</code><a class="headerlink" href="#catalog.models.Category.synonyms" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">

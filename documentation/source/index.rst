@@ -11,6 +11,8 @@
    :caption: Оглавление:
    
    readme
+   techspec
+   dettechspec
    modules
 
 * :ref:`genindex`

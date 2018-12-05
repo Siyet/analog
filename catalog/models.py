@@ -126,6 +126,7 @@ class Category(Base):
     subcategories = None
 
     title = models.CharField(max_length=255, verbose_name='Наименование')
+    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой")
     
     def getAttributes(self):
         if not self.subcategories:
