@@ -36,8 +36,8 @@ class Product(Base):
     """
     
     title = models.CharField(max_length=255, verbose_name='Наименование')
-    category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Класс", related_name='products')
     subcategory = models.ForeignKey('Subcategory', on_delete=models.PROTECT, verbose_name="Вид", related_name='products')
+    attrs_values = models.ManyToManyField('AttributeValue')
 
     def __str__(self):
         return self.title
@@ -81,7 +81,7 @@ class AttributeValue(Base):
     """
     Модель значения атрибута
     """
-    title = models.CharField(max_length=255, verbose_name='Наименование')
+    title = models.CharField(max_length=255, verbose_name='Значение')
     attribute = models.ForeignKey(Attribute, on_delete=models.PROTECT, verbose_name="Атрибут", related_name="values")
 
     class Meta:
@@ -95,6 +95,7 @@ class Specification(Base):
     """
     
     title = models.CharField(max_length=255, verbose_name='Наименование')
+    listings = models.ManyToManyField('Listing')
 
     class Meta:
         verbose_name = "Спецификация"
@@ -153,6 +154,7 @@ class Subcategory(Base):
 
     title = models.CharField(max_length=255, verbose_name='Наименование')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Класс", related_name='subcategories')
+    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой")
     
     def __str__(self):
         return self.title
@@ -167,6 +169,7 @@ class Manufacturer(Base):
     """
 
     title = models.CharField(max_length=255, verbose_name='Наименование')
+    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой")
 
     def __str__(self):
         return self.title
