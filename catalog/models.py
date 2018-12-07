@@ -5,9 +5,7 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import User
-
-def getUuid():
-    return str(uuid.uuid4()).replace('-','')
+from django.utils import timezone
 
 
 class Base(models.Model):
@@ -15,19 +13,25 @@ class Base(models.Model):
     Абстрактная базовая модель
     """
 
-    id = models.UUIDField(primary_key=True, default=getUuid(), editable=False)
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Когда создано", editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Когда создано")
     created_by = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Кем создано", editable=False, related_name="+")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="Когда обновлено", editable=False)
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Когда обновлено")
     updated_by = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Кем обновлено", editable=False, related_name="+")
     is_public = models.BooleanField("Опубликовано?", default=False)
-    deleted = models.BooleanField("Удалено?", default=False, editable=False)
-    rev = models.CharField("Ревизия", default='1-{0}'.format(getUuid()), max_length=64, editable=False)
+    deleted = models.BooleanField("В архиве?", default=False, editable=False)
+    rev = models.CharField("Ревизия", default='1-{0}'.format(uuid.uuid4()), max_length=38, editable=False)
 
     class Meta:
         abstract = True
         verbose_name = "Базовая модель"
         verbose_name_plural = "Базовые модели"
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.created_at = timezone.now()
+        self.updated_at = timezone.now()
+        return super(Base, self).save(*args, **kwargs)
 
 
 class Product(Base):
@@ -37,7 +41,7 @@ class Product(Base):
     
     title = models.CharField(max_length=255, verbose_name='Наименование')
     subcategory = models.ForeignKey('Subcategory', on_delete=models.PROTECT, verbose_name="Вид", related_name='products')
-    attrs_values = models.ManyToManyField('AttributeValue')
+    attrs_values = models.ManyToManyField('AttributeValue', verbose_name="Атрибуты")
 
     def __str__(self):
         return self.title
@@ -127,7 +131,7 @@ class Category(Base):
     subcategories = None
 
     title = models.CharField(max_length=255, verbose_name='Наименование')
-    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой")
+    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой", blank=True)
     
     def getAttributes(self):
         if not self.subcategories:
@@ -154,7 +158,7 @@ class Subcategory(Base):
 
     title = models.CharField(max_length=255, verbose_name='Наименование')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Класс", related_name='subcategories')
-    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой")
+    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой", blank=True)
     
     def __str__(self):
         return self.title
@@ -169,7 +173,7 @@ class Manufacturer(Base):
     """
 
     title = models.CharField(max_length=255, verbose_name='Наименование')
-    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой")
+    synonyms = models.CharField(max_length=255, verbose_name='Синонимы', help_text="Вписывайте синонимы через точку с запятой", blank=True)
 
     def __str__(self):
         return self.title
