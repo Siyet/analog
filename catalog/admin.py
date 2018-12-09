@@ -4,7 +4,6 @@ from .models import Category, Subcategory, Product, Manufacturer, Attribute, Att
 
 class BaseAdmin(admin.ModelAdmin):
     
-
     def save_model(self, request, obj, form, change): 
         if not change:
             obj.created_by = request.user
@@ -31,6 +30,9 @@ class CategoryAdmin(BaseAdmin):
 #     def __init__(self, *args, **kwargs):
 #         super(LogEntryAdmin, self).__init__(*args, **kwargs)
 #         self.list_display_links = (None, )
+
+# TODO реализовать фильтры поиска по колонкам, рецепт тут: https://medium.com/@hakibenita/how-to-add-a-text-filter-to-django-admin-5d1db93772d8 
+# TODO экспорт в формат xls https://xlsxwriter.readthedocs.io/index.html 
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Subcategory, BaseAdmin)
