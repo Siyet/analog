@@ -1,0 +1,1041 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Проектное решение по разработке Системы Analog &mdash; Документация Система Analog 0.1</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Исходный код" href="modules.html" />
+    <link rel="prev" title="Функциональные требования к Системе Analog" href="techspec.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Система Analog
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Оглавление:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Система Analog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techspec.html">Функциональные требования к Системе Analog</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Проектное решение по разработке Системы Analog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1. Определения, сокращения и аббревиатуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2. Общие сведения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">3. Бизнес-процессы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">4. Декомпозиция архитектуры</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">4.1 АРМ Пользователя</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">4.2 АРМ Администратора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">5. Сущности</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">5.1 производитель</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">5.2 класс</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">5.3 тип</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">5.4 атрибут</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">5.5 значение атрибута</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">5.6 товар</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">5.7 предложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">5.8 спецификация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">5.9 Пользователь</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">5.10 Группы пользователей</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">6. Представления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">6.1 таблица/перечень</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">6.2 карточка экземпляра сущности</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">6.3 форма запроса параметров подбора спецификации-аналога</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">7. Группы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">8. Справочники и классификаторы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">9. Требования к отказоустойчивости</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Исходный код</a></li>
+</ul>
+
+            
+          
+<a href="genindex.html">Алфавитный указатель</a>
+<a href="py-modindex.html">Состав модулей</a>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Система Analog</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Проектное решение по разработке Системы Analog</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dettechspec.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="analog">
+<h1>Проектное решение по разработке Системы Analog<a class="headerlink" href="#analog" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>1. Определения, сокращения и аббревиатуры<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="29%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Аббревиатура</th>
+<th class="head">Термин</th>
+<th class="head">Определение</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#160;</td>
+<td>Сущность</td>
+<td>Тип сведений, хранящихся в Базе
+данных, имеющих одинаковые по
+структуре свойства (поля)</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>Экземпляр сущности</td>
+<td>Уникально идентифицируемая единица
+сведений, хранящихся в БД,
+относящаяся к какой-либо из
+сущностей Системы</td>
+</tr>
+<tr class="row-even"><td>CRUD</td>
+<td>create, read,
+update, delete —
+«создать, прочесть,
+обновить, удалить»</td>
+<td><p class="first">акроним, обозначающий четыре
+базовые функции, используемые при
+работе с персистентными хранилищами
+данных:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>создание;</li>
+<li>чтение;</li>
+<li>редактирование;</li>
+<li>удаление.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>2. Общие сведения<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Система <strong>Analog</strong> служит для подбора аналогов позиций спецификации
+предложений товаров, а также для учета производителей, товаров,
+предложений производителей и т. д.</p>
+</div>
+<div class="section" id="id3">
+<h2>3. Бизнес-процессы<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p><strong>3.1 УЧЕТ ЭКЗЕМПЛЯРОВ СУЩНОСТЕЙ</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Шаг 1:</th><td class="field-body"><p class="first">Пользователь с правами Администратора авторизуется в АРМ Администратора</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Шаг 2:</th><td class="field-body"><p class="first">Открывает табличное представление справочника, в который требуется внести изменение</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Шаг 3:</th><td class="field-body"><p class="first">Внесение изменений:</p>
+<ol class="last arabic simple">
+<li>Пользователь прямо из табличного представления удаляет одну или несколько записей,
+удаление перемещает запись в архив</li>
+<li>Для добавления записи пользователь нажимает соответствующую кнопку в табличном представлении,
+переходит на страницу карточки экземпляра сущности, заполняет ее и нажимает сохранить</li>
+<li>Для редактирования записи, пользователь находит ее в таблице, открывает карточку данной записи,
+вносит изменения и нажимает кнопку сохранить.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.2 ПОДБОР АНАЛОГОВ</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Шаг 1:</th><td class="field-body">Пользователь авторизуется в системе</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Шаг 2:</th><td class="field-body">Выбирает пункт меню – загрузить спецификацию. Открывается окно с выбором файла для загрузки.
+После нажатия ОК, появляется форма, в которой необходимо выбрать производителя, на котором
+сделана загружаемая спецификация. Производитель выбирается из выпадающего списка. Подтверждается нажатием ОК.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Шаг 3:</th><td class="field-body">Внесение параметров подбора: После загрузки спецификации и выбора производителя,
+появляется окно с формой запроса параметров подбора спецификации-аналога. Форма
+описана в разделе <a class="reference internal" href="#id21">6.3 форма запроса параметров подбора спецификации-аналога</a>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Алгоритм поиска замены</dt>
+<dd><p class="first">Загруженная спецификация отрабатывается построчно. Каждой строке в выходной спецификации должна
+соответствовать строка исходной спецификации.</p>
+<p>Для каждого артикула i-той строки исходной спецификации производится поиск записи в БД.
+В случае, если артикула исходн.спецификации в БД нет – в этой строке выходной спецификации
+указывается – артикул в БД не найден.</p>
+<p>Если артикул найден, то с учетом данных найденной записи производится поиск записи аналога.
+Поиск производится с учетом того, что поля Класс, Тип должны полностью совпадать с параметрами
+записи исходной позиции, поле Производитель – с наименованием Производителя выбранном в форме запроса.</p>
+<p>Поиск по атрибутам производится последовательно. Т.е. первый атрибут имеет больший приоритет перед последующим.
+Для жестких атрибутов требуется полное совпадение значений с исходной записью, если иное не указано в форме запроса.
+Для мягких атрибутов совпадения ищутся исходя параметров по умолчанию, если иное не указано в форме запроса.</p>
+<p>После выбора позиции производится анализ атрибутов Пересчет, Взаимосвязь и Цена. Для атрибута Пересчет должен
+производится пересчет количества с округлением вверх до целого элемента.</p>
+<p class="last">Выходная спецификация должна быть составлена в тех же ед. измерения, что и входная.</p>
+</dd>
+</dl>
+<p><strong>Блок-схема алгоритма подбора замены:</strong></p>
+<img alt="_images/Алгоритм.jpg" src="_images/Алгоритм.jpg" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Шаг 4:</th><td class="field-body"><p class="first">Сохранение результатов</p>
+<p>После проведения поиска у пользователя запрашивается место для сохранения файла с результатом.
+Результат сохраняется в формате эксель. Столбцы – номер п/п, артикул, наименование, кол-во, ед.изм.</p>
+<p>В выходной спецификации на каждый элемент исходной спецификации должен быть представлен аналогичный
+элемент в выходной спецификации (с учетом параметров «взаимосвязь» общее количество элементов может
+незначительно отличаться). На один элемент исходной спецификации НЕ может быть представлено несколько
+вариантов в выходной спецификации</p>
+<p>Пользователь может определять формат вывода информации – указывать какие столбцы должны быть в «выходной» спецификации.</p>
+<p class="last">В БД должны сохраняться все произведенные подборы в формате – «исходная спецификация – выходная
+спецификация» – с возможностью выгрузки для администратора единой совмещенной таблицы для удобного
+анализа – что было на входе, что стало на выходе.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>4. Декомпозиция архитектуры<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>4.1 АРМ Пользователя<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Доступ предоставляется всем пользователям Системы.</p>
+<p>Содержит следующий функционал:</p>
+<ul class="simple">
+<li><strong>Загрузка спецификации и подбор аналогов</strong></li>
+<li><strong>Отображение ранее загруженных спецификаций</strong></li>
+<li><strong>Настройки пользователя (например, смена пароля)</strong></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>4.2 АРМ Администратора<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Доступ предоставляется только пользователем с ролью Администратор.</p>
+<p>Включает следующий функционал:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Функционал прикладного администратора:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first">Раздел учета прикладных экземпляров сущностей, касающихся работы со спецификациями и подбора аналогов предложений</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Функционал систменого админисратора:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">Раздел учета пользователей и групп и настройки прав доступа.</p>
+<p>Содержит подразделы <strong>Пользователи</strong> и <strong>Группы</strong>, которые должны быть реализованы в виде представления <a class="reference internal" href="#id19">6.1 таблица/перечень</a>.</p>
+<p>Права доступа могут быть назначены как <strong>Пользователю</strong>, так и <strong>Группе пользователей</strong>.</p>
+<p>По умолчанию должны генериться CRUD-права на каждую из сущностей. Т. е. по четыре разных права (создание, редактирование, просмотр и удаление).</p>
+<p class="last">Перечень дополнительных прав будет выявлен в процессе разработки.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Пример реализации АРМа Администратора</strong></p>
+<img alt="_images/Админ_панель.png" src="_images/Админ_панель.png" />
+</div>
+<div class="section" id="id7">
+<h2>5. Сущности<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Все нижеописанные сущности должны расширять базовую, содержащую следующие ее поля:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Уникальный идентификатор <em>(системное поле)</em></li>
+<li>Номер ревизии <em>(системное поле)</em></li>
+<li>Кто создал <em>(взаимосвязь с Пользователем)</em></li>
+<li>Когда создал <em>(дата и время)</em></li>
+<li>Кто последний обновил <em>(взаимосвязь с Пользователем)</em></li>
+<li>Когда обновил <em>(дата и время)</em></li>
+<li>Опубликовано? <em>(да/нет)</em></li>
+<li>Признак логического удаления/перемещения в архив <em>(да/нет)</em></li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Пенречень сущностей:</dt>
+<dd><ul class="first last simple">
+<li>Производитель</li>
+<li>Класс</li>
+<li>Тип</li>
+<li>Атрибут</li>
+<li>Значение атрибута</li>
+<li>Товар</li>
+<li>Предложение</li>
+<li>Спецификация</li>
+<li>Пользователь</li>
+<li>Группа пользователей</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id8">
+<h2>5.1 производитель<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Экземпляром сущности <em>производитель</em> является поставщик предложений товаров.</p>
+<p>Удаление экземпляра данной сущности должен отправлять его в архив. В архив
+также должны быть отправлены все предложения данного производителя. Записи
+архива не учавствуют в подборе аналогов.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Наименование</li>
+<li>Синонимы</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h2>5.2 класс<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Экземпляром сущности <em>класс</em> является крупная товарная категория.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Наименование</li>
+<li>Синонимы</li>
+<li>Типы <em>(Взаимосвязь с типами)</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id10">
+<h2>5.3 тип<a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Подгруппа товаров внутри каждого класса, для более удобного поиска и классификации.
+Внутри одного <em>Типа</em> каждого <em>Класса</em> задействованы одинаковые <em>Атрибуты</em> для всех позиций.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Наименование</li>
+<li>Синонимы</li>
+<li>Принадлежность к классу <em>(взаимосвязь с Классом)</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h2>5.4 атрибут<a class="headerlink" href="#id11" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Экземпляром сущности <em>атрибут</em> является характеристика <em>товара</em>.</p>
+<p><em>Атрибуты разделены на типы - *Жесткий</em>, <em>Мягкий</em>, <em>Пересчет</em>, <em>Взаимосвязь</em>, <em>Цена</em></p>
+<p>При поиске первоочередность атрибута имеет значение. <em>Пример – атрибут B1 приоритетнее
+атрибута B2.</em></p>
+<p><em>Жесткий атрибут</em>, группа А – как правило, такой тип жестко определяет подгруппу
+или свойство товаров, к которой должен относиться подбираемый аналог. Такой параметр жестко
+определяет важные свойства товара.</p>
+<p>По умолчанию все жесткие атрибуты подбираемого аналога должны в точности соответствовать
+жестким атрибутам исходной позиции</p>
+<p>Пример алгоритма: «продукт - кабельный лоток прямая секция, покрытие – холодный цинк,
+ширина – 500». Все перечисленные атрибуты должны в точности совпадать с подбираемым аналогом.</p>
+<p><em>Мягкий Атрибут</em>, группа B  – как правило, такой тип имеет незначительную вариативность
+конкретного свойства товара у разных производителей. Как правило, отличия этих свойства
+не являются определяющими и критическими, однако требуют уточнения для нахождения аналога
+в процессе поиска. Также такой тип параметра требует уточнения принципа поиска, который
+задается при формировании запроса на подбор аналогов.</p>
+<p>Пример алгоритма подбора - Мягкий атрибут для продукта каб.лоток прямая секция –
+«толщина – 0,8мм, высота борта – 50мм». При наличии нескольких вариантов выбора (т.е. все
+жесткие атрибуты совпадают), необходимо осуществлять подбор с учетом расширенных – мягких атрибутов.</p>
+<p>По умолчанию – подбирается позиция с наиболее арифметически близким значением.</p>
+<p>По умолчанию – приоритет подбора атрибутов – по порядку. Т.е. первоочередность атрибута имеет
+значение. <em>Пример – атрибут B1 приоритетнее атрибута B2.</em></p>
+<p>При условии указаний пользовательских критериев поиска  - критерии задаются в форме запроса.
+Примеры критериев подбора для параметра «толщина»: не более, чем … мм, выбрать минимальный
+из имеющихся, выбрать максимальный из имеющихся, выбрать наиболее близкий к исходному.</p>
+<p><em>Атрибут Пересчет</em>, группа C – подобранный элемент-аналог может совпадать по всем заданным
+параметрам, однако иметь другой размер. Например, длина исходной секции – 3000мм, а длина
+подобранного и полностью подходящего по всем параметрам аналога составляет 2000мм. В этом случае,
+необходимо соответствующим образом, пересчитать количество товара в «выходной» спецификации.</p>
+<p>Пример алгоритм подбора параметра Пересчет - в исходной спецификации количество может быть
+задано как в штуках, так и в метрах. Если задано в метрах – пересчитывать не нужно. Если задано
+в штуках, то необходимо:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>уточнить – есть ли разница в длине кабельных лотков – исходного и подбираемого</li>
+<li>Если разница есть, то перевести исходное кол-во в метры, а затем метры поделить
+на длину подбираемого лотка, округлить в большую сторону.</li>
+</ol>
+</div></blockquote>
+<p><em>Атрибут Взаимосвязь</em> – определяет наличие взаимосвязей между элементами. Так, например,
+для крепления крышки у одного производителя не требуется доп.элементов, а у другого необходимы клипсы.</p>
+<p><em>Атрибут Цена</em> – без комментариев</p>
+<p><strong>Пример</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="5%" />
+<col width="3%" />
+<col width="6%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="9%" />
+<col width="4%" />
+<col width="6%" />
+<col width="8%" />
+<col width="3%" />
+<col width="3%" />
+<col width="4%" />
+<col width="6%" />
+<col width="4%" />
+<col width="9%" />
+<col width="6%" />
+<col width="3%" />
+<col width="3%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="4">&#160;</td>
+<td colspan="16">атрибуты</td>
+</tr>
+<tr class="row-even"><td colspan="4">&#160;</td>
+<td>А1</td>
+<td>А2</td>
+<td>А3</td>
+<td>А4</td>
+<td>А5</td>
+<td>B1</td>
+<td>B2</td>
+<td>B3</td>
+<td>B4</td>
+<td>C1</td>
+<td>C2</td>
+<td>C3</td>
+<td>D1</td>
+<td>D2</td>
+<td>E1</td>
+<td>E2</td>
+</tr>
+<tr class="row-odd"><td colspan="4">&#160;</td>
+<td colspan="16">тип атрибута</td>
+</tr>
+<tr class="row-even"><td colspan="4">ключевые параметры записи</td>
+<td>жесткий</td>
+<td>жесткий</td>
+<td>жесткий</td>
+<td>жесткий</td>
+<td>жесткий</td>
+<td>мягкий</td>
+<td>мягкий</td>
+<td>мягкий</td>
+<td>мягкий</td>
+<td>пересчет</td>
+<td>пересчет</td>
+<td>пересчет</td>
+<td>взаимосвязь</td>
+<td>взаимосвязь</td>
+<td>цена 1</td>
+<td>цена 2</td>
+</tr>
+<tr class="row-odd"><td colspan="4">&#160;</td>
+<td colspan="16">пользовательское название артибута для конкретного класса</td>
+</tr>
+<tr class="row-even"><td>класс</td>
+<td>тип</td>
+<td>арт</td>
+<td>производитель</td>
+<td>вид</td>
+<td>покрытие</td>
+<td>ширина, мм</td>
+<td>резерв</td>
+<td>резерв</td>
+<td>толщина, мм</td>
+<td>высота борта, мм</td>
+<td>резерв</td>
+<td>резерв</td>
+<td>длина,мм</td>
+<td>ед.изм.</td>
+<td>резерв</td>
+<td>крепление</td>
+<td>резерв</td>
+<td>руб.</td>
+<td>резерв</td>
+</tr>
+<tr class="row-odd"><td>КНС</td>
+<td>прямая
+секция</td>
+<td>101010</td>
+<td>А</td>
+<td>перф.</td>
+<td>сендзимир</td>
+<td>200</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>0,8</td>
+<td>80</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>3000</td>
+<td>штуки/метры</td>
+<td>&#160;</td>
+<td>компл.соединителя,
+1шт, арт ХХХ</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>класс</td>
+<td>тип</td>
+<td>арт</td>
+<td>производитель</td>
+<td>вид</td>
+<td>проводник</td>
+<td>номинал, А</td>
+<td>кол-во проводников</td>
+<td>класс IP</td>
+<td>корпус</td>
+<td>резерв</td>
+<td>резерв</td>
+<td>резерв</td>
+<td>длина,мм</td>
+<td>штуки/метры</td>
+<td>резерв</td>
+<td>резерв</td>
+<td>резерв</td>
+<td>руб.</td>
+<td>резерв</td>
+</tr>
+<tr class="row-odd"><td>ШП</td>
+<td>поворотный
+модуль</td>
+<td>40932</td>
+<td>ХХ</td>
+<td>распреде-
+лительный</td>
+<td>Алюм.</td>
+<td>2000А</td>
+<td>4</td>
+<td>IP55</td>
+<td>сталь</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Тип <em>(Жесткий, Мягкий, Пересчет, Взаимосвязь, Цена)</em></li>
+<li>Наименование</li>
+<li>Приоритет <em>(Положительное целое число)</em></li>
+<li>Принадлежность к Типу товаров <em>(Взаимосвязь с Тип)</em></li>
+<li>Возможные значения <em>(Взаимосвязь Значение атрибута)</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id12">
+<h2>5.5 значение атрибута<a class="headerlink" href="#id12" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Экземпляр сущности <em>значение атрибута</em> представляет собой значение одного
+атрибута одного из товаров.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Значение</li>
+<li>Принадлежность к атрибуту <em>(Взаимосвязь с Атрибут)</em></li>
+<li>Принадлежность к товару <em>(Взаимосвязь с Товаром)</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id13">
+<h2>5.6 товар<a class="headerlink" href="#id13" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Экземпляр сущности <em>товар</em> фактически представляет собой группу <em>предложений</em>, которые принадлежат одному типу и имеют одинаковые значения всех <em>атрибутов</em> за исключением <em>атрибутов</em> типа <em>цена</em>.</p>
+<p>Удаление экземпляра данной сущности должен отправлять его в архив. В архив
+также должны быть отправлены все предложения данного товара. Записи
+архива не учавствуют в подборе аналогов.</p>
+<p><em>&gt; Необходимость в данной сущности под вопросом!</em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Наименование</li>
+<li>Принадлежность к Типу <em>(Взаимосвязь с Тип)</em></li>
+<li>Значения атрибутов <em>(Взаимосвязь Значение атрибута)</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id14">
+<h2>5.7 предложение<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h2>
+<p><em>Предложение</em> принадлежит какому-либо <em>производителю</em> и только одному. Также ссылается только на один <em>товар</em>.</p>
+<p>Удаление экземпляра данной сущности должен отправлять его в архив. Записи
+архива не учавствуют в подборе аналогов.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Производитель <em>(Взаимосвязь с Производителем)</em></li>
+<li>Товар <em>(Взаимосвязь с Товаром)</em></li>
+<li>Артикул <em>У каждой позиции внутри одного производителя есть уникальный артикул. Артикулы разных производителей, теоретически могут иметь повторения.</em></li>
+<li>Значения атрибутов <em>(Взаимосвязь Значение атрибута)</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id15">
+<h2>5.8 спецификация<a class="headerlink" href="#id15" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Экземпляр сущности <em>спецификация</em> представляет собой загружаемую группу предложений с целью поиска их аналогов.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Наименование</li>
+<li>Позиции (предложения) <em>(Взаимосвязь с Предложениями)</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id16">
+<h2>5.9 Пользователь<a class="headerlink" href="#id16" title="Ссылка на этот заголовок">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Имя пользователя</li>
+<li>Принадлежность к группам <em>(Взаимосвязь с Группами)</em></li>
+<li>Электронная почта</li>
+<li>Логин</li>
+<li>Пароль</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id17">
+<h2>5.10 Группы пользователей<a class="headerlink" href="#id17" title="Ссылка на этот заголовок">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Поля:</th><td class="field-body"><ul class="first last simple">
+<li>Наименование</li>
+<li>Права</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id18">
+<h2>6. Представления<a class="headerlink" href="#id18" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="id19">
+<h2>6.1 таблица/перечень<a class="headerlink" href="#id19" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представляет собой страницу Системы с размещенной на ней таблицей с данными.</p>
+<p>Данное представление должно предусматривать:</p>
+<ul class="simple">
+<li>Прямую и обратную сортировку по одной или нескольким колонок.
+На случай сортировки по нескольким колонкам должна быть предсмотрена
+возможность выставления приоритета сортировки.</li>
+<li>Фильтрацию по заранее определнным колонкам. Фильтрация по колонке может быть представлена в виде поиска:
+- поиска по колонке;
+- в виде выбора значения из справочника;
+- выбор заранее определенного диапозона значений;
+- иные фильтры четко описанные в разделе <a class="reference internal" href="#id7">5. Сущности</a>.</li>
+<li>Возможность применения действия (например, отправка в архив) к нескольким
+записям одновременно.</li>
+<li>Отображение общего количества записей в данной таблице.</li>
+<li>При большом количестве строк - разбиение на страницы.</li>
+<li>Импорт данных из XLS.</li>
+<li>Экспорт данных в XLS.</li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h2>6.2 карточка экземпляра сущности<a class="headerlink" href="#id20" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представляет собой страницу Системы с размещенной на ней информацией о создаваемом или существующем экземпляре сущности.</p>
+<p>Данное представление должно предусматривать возможность редактирования каждого из полей экземпляра сущности, доступного для редактирования.</p>
+<p>Здесь же должна бытьотображена информация об истории изменения данного экземпляра сущности.</p>
+</div>
+<div class="section" id="id21">
+<h2>6.3 форма запроса параметров подбора спецификации-аналога<a class="headerlink" href="#id21" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Форма состоит из трех частей.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Первая часть:</th><td class="field-body"><p class="first">«автоматический подбор»</p>
+<p>Из выпадающего списка выбирается производитель,
+на котором будет сделана исходящая спецификация. Внизу формы две кнопки – Атрибуты и ОК.
+При выборе ОК – начинается подбор. Атрибуты – расширение формы вниз.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Вторая часть:</th><td class="field-body"><p class="first">Форма динамическая! В этой части формы –
+перечень «мягких» атрибутов для каждого класса. Напротив каждого атрибута –
+значение по умолчанию с выпадающим списком возможных вариантов выбора.
+В форму выбираются только те атрибуты тех классов, товары которых есть во входной спецификации.
+«Лишние» классы и атрибуты  выводиться в форме не должны. Возможно разделение по классам для простоты понимания.</p>
+<p>Галочка к атрибуту «пересчет»</p>
+<p>Внизу также кнопки – Доп.атрибуты и ОК. при выборе ОК – начинается подбор.</p>
+<p>Доп.Атрибуты – еще расширение формы вниз.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Третья часть:</th><td class="field-body"><p class="first last">В этой части формы –
+перечень «жестких» атрибутов для каждого класса. Форма также динамическая. Напротив каждого атрибута –
+значение по умолчанию с выпадающим списком возможных вариантов выбора.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id22">
+<h2>7. Группы<a class="headerlink" href="#id22" title="Ссылка на этот заголовок">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Администратор:</th><td class="field-body"><ul class="first simple">
+<li>Пользователь, имеющий CRUD права на все сущности и их экземпляры</li>
+<li>Пользователь, имеющий read права на все сущности и их экземпляры</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Менеджер:</th><td class="field-body"><p class="first">(клиент Системы)</p>
+<ul class="last simple">
+<li>Пользователь, имеющий права на загрузку спецификаций, получение результата и редактирование.</li>
+<li>Пользователь, имеющий права только на загрузку спецификаций и получение результата, без возможности редактирования.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id23">
+<h2>8. Справочники и классификаторы<a class="headerlink" href="#id23" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Нижеописанные записи в справочниках, являются примерами, полный перечень справочников
+и записей в них будет выявлен в процессе разработки.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Производители:</th><td class="field-body"><ul class="first simple">
+<li>A</li>
+<li>XX</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Классы:</th><td class="field-body"><ul class="first simple">
+<li>ШП</li>
+<li>КНС</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Типы:</th><td class="field-body"><ul class="first simple">
+<li>Поворотный модуль <em>(класс - ШП)</em></li>
+<li>Прямая секция <em>(класс - КНС)</em></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Атрибуты:</th><td class="field-body"><ol class="first upperalpha simple">
+<li>Жесткие <em>(вид - КНС/Прямая секция)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Вид</li>
+<li>Покрытие</li>
+<li>Ширина, мм</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="2">
+<li>Мягкие <em>(вид - КНС/Прямая секция)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Толщина, мм</li>
+<li>Высота борта, мм</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="3">
+<li>Пересчет <em>(вид - КНС/Прямая секция)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Длина, мм</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="4">
+<li>Взаимосвязь <em>(вид - КНС/Прямая секция)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Крепление</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="5">
+<li>Цена <em>(вид - КНС/Прямая секция)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>руб.</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple">
+<li>Жесткие <em>(вид - ШП/Поворотный модуль)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Вид</li>
+<li>Проводник</li>
+<li>Номинал, А</li>
+<li>Количество проводников</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="2">
+<li>Мягкие <em>(вид - ШП/Поворотный модуль)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Корпус</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="3">
+<li>Пересчет <em>(вид - ШП/Поворотный модуль)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Длина, мм</li>
+</ol>
+</div></blockquote>
+<ol class="upperalpha simple" start="5">
+<li>Цена <em>(вид - ШП/Поворотный модуль)</em></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>руб.</li>
+</ol>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Типы атрибутов:</th><td class="field-body"><ul class="first last simple">
+<li>Жесткий</li>
+<li>Мягкий</li>
+<li>Пересчет</li>
+<li>Взаимосвязь</li>
+<li>Цена</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id24">
+<h2>9. Требования к отказоустойчивости<a class="headerlink" href="#id24" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Требуется выполнять резервное копирование БД 1 раз в сутки в ночное время.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="Исходный код" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="techspec.html" class="btn btn-neutral" title="Функциональные требования к Системе Analog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Alexander Tseluyko
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
