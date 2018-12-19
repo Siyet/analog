@@ -5,4 +5,4 @@ class CatalogConfig(AppConfig):
     name = 'catalog'
 
     class Meta:
-        verbose_name="Каталог"
+        verbose_name="Функционал прикладного администратора"

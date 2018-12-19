@@ -177,7 +177,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="catalog.html#catalog.models.Base.Meta.abstract">abstract (атрибут catalog.models.Base.Meta)</a>
 </li>
-      <li><a href="catalog.html#catalog.models.Listing.article">article (атрибут catalog.models.Listing)</a>
+      <li><a href="catalog.html#catalog.models.Product.article">article (атрибут catalog.models.Product)</a>
+</li>
+      <li><a href="catalog.html#catalog.admin.AttrAdmin">AttrAdmin (класс в catalog.admin)</a>
 </li>
       <li><a href="catalog.html#catalog.models.AttributeValue.attribute">attribute (атрибут catalog.models.AttributeValue)</a>
 </li>
@@ -185,10 +187,10 @@
 </li>
       <li><a href="catalog.html#catalog.models.Attribute.DoesNotExist">Attribute.DoesNotExist</a>
 </li>
-      <li><a href="catalog.html#catalog.models.Attribute.MultipleObjectsReturned">Attribute.MultipleObjectsReturned</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="catalog.html#catalog.models.Attribute.MultipleObjectsReturned">Attribute.MultipleObjectsReturned</a>
+</li>
       <li><a href="catalog.html#catalog.models.AttributeValue.attribute_id">attribute_id (атрибут catalog.models.AttributeValue)</a>
 </li>
       <li><a href="catalog.html#catalog.models.Subcategory.attributes">attributes (атрибут catalog.models.Subcategory)</a>
@@ -274,8 +276,6 @@
 </li>
         <li><a href="catalog.html#catalog.models.Category.created_by">(атрибут catalog.models.Category)</a>
 </li>
-        <li><a href="catalog.html#catalog.models.Listing.created_by">(атрибут catalog.models.Listing)</a>
-</li>
         <li><a href="catalog.html#catalog.models.Manufacturer.created_by">(атрибут catalog.models.Manufacturer)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Product.created_by">(атрибут catalog.models.Product)</a>
@@ -310,8 +310,6 @@
 </li>
         <li><a href="catalog.html#catalog.models.Category.get_next_by_created_at">(метод catalog.models.Category)</a>
 </li>
-        <li><a href="catalog.html#catalog.models.Listing.get_next_by_created_at">(метод catalog.models.Listing)</a>
-</li>
         <li><a href="catalog.html#catalog.models.Manufacturer.get_next_by_created_at">(метод catalog.models.Manufacturer)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Product.get_next_by_created_at">(метод catalog.models.Product)</a>
@@ -330,8 +328,6 @@
 </li>
         <li><a href="catalog.html#catalog.models.Category.get_next_by_updated_at">(метод catalog.models.Category)</a>
 </li>
-        <li><a href="catalog.html#catalog.models.Listing.get_next_by_updated_at">(метод catalog.models.Listing)</a>
-</li>
         <li><a href="catalog.html#catalog.models.Manufacturer.get_next_by_updated_at">(метод catalog.models.Manufacturer)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Product.get_next_by_updated_at">(метод catalog.models.Product)</a>
@@ -349,8 +345,6 @@
         <li><a href="catalog.html#catalog.models.Base.get_previous_by_created_at">(метод catalog.models.Base)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Category.get_previous_by_created_at">(метод catalog.models.Category)</a>
-</li>
-        <li><a href="catalog.html#catalog.models.Listing.get_previous_by_created_at">(метод catalog.models.Listing)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Manufacturer.get_previous_by_created_at">(метод catalog.models.Manufacturer)</a>
 </li>
@@ -371,8 +365,6 @@
         <li><a href="catalog.html#catalog.models.Base.get_previous_by_updated_at">(метод catalog.models.Base)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Category.get_previous_by_updated_at">(метод catalog.models.Category)</a>
-</li>
-        <li><a href="catalog.html#catalog.models.Listing.get_previous_by_updated_at">(метод catalog.models.Listing)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Manufacturer.get_previous_by_updated_at">(метод catalog.models.Manufacturer)</a>
 </li>
@@ -401,10 +393,6 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="catalog.html#catalog.models.Base.id">id (атрибут catalog.models.Base)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="catalog.html#catalog.models.Base.is_public">is_public (атрибут catalog.models.Base)</a>
 </li>
   </ul></td>
@@ -413,22 +401,10 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="catalog.html#catalog.admin.CategoryAdmin.list_display">list_display (атрибут catalog.admin.CategoryAdmin)</a>
-</li>
-      <li><a href="catalog.html#catalog.models.Listing">Listing (класс в catalog.models)</a>
-</li>
-      <li><a href="catalog.html#catalog.models.Listing.DoesNotExist">Listing.DoesNotExist</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="catalog.html#catalog.models.Listing.MultipleObjectsReturned">Listing.MultipleObjectsReturned</a>
-</li>
-      <li><a href="catalog.html#catalog.models.Manufacturer.listings">listings (атрибут catalog.models.Manufacturer)</a>
+      <li><a href="catalog.html#catalog.admin.AttrAdmin.list_display">list_display (атрибут catalog.admin.AttrAdmin)</a>
 
       <ul>
-        <li><a href="catalog.html#catalog.models.Product.listings">(атрибут catalog.models.Product)</a>
-</li>
-        <li><a href="catalog.html#catalog.models.Specification.listings">(атрибут catalog.models.Specification)</a>
+        <li><a href="catalog.html#catalog.admin.CategoryAdmin.list_display">(атрибут catalog.admin.CategoryAdmin)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -437,7 +413,7 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="catalog.html#catalog.models.Listing.manufacturer">manufacturer (атрибут catalog.models.Listing)</a>
+      <li><a href="catalog.html#catalog.models.Product.manufacturer">manufacturer (атрибут catalog.models.Product)</a>
 </li>
       <li><a href="catalog.html#catalog.models.Manufacturer">Manufacturer (класс в catalog.models)</a>
 </li>
@@ -447,11 +423,13 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="catalog.html#catalog.models.Listing.manufacturer_id">manufacturer_id (атрибут catalog.models.Listing)</a>
+      <li><a href="catalog.html#catalog.models.Product.manufacturer_id">manufacturer_id (атрибут catalog.models.Product)</a>
 </li>
-      <li><a href="catalog.html#catalog.admin.BaseAdmin.media">media (атрибут catalog.admin.BaseAdmin)</a>
+      <li><a href="catalog.html#catalog.admin.AttrAdmin.media">media (атрибут catalog.admin.AttrAdmin)</a>
 
       <ul>
+        <li><a href="catalog.html#catalog.admin.BaseAdmin.media">(атрибут catalog.admin.BaseAdmin)</a>
+</li>
         <li><a href="catalog.html#catalog.admin.CategoryAdmin.media">(атрибут catalog.admin.CategoryAdmin)</a>
 </li>
       </ul></li>
@@ -478,8 +456,6 @@
 </li>
         <li><a href="catalog.html#catalog.models.Category.objects">(атрибут catalog.models.Category)</a>
 </li>
-        <li><a href="catalog.html#catalog.models.Listing.objects">(атрибут catalog.models.Listing)</a>
-</li>
         <li><a href="catalog.html#catalog.models.Manufacturer.objects">(атрибут catalog.models.Manufacturer)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Product.objects">(атрибут catalog.models.Product)</a>
@@ -501,22 +477,24 @@
 </li>
       <li><a href="catalog.html#catalog.models.Attribute.priority">priority (атрибут catalog.models.Attribute)</a>
 </li>
-      <li><a href="catalog.html#catalog.models.Listing.product">product (атрибут catalog.models.Listing)</a>
-</li>
       <li><a href="catalog.html#catalog.models.Product">Product (класс в catalog.models)</a>
+</li>
+      <li><a href="catalog.html#catalog.models.Product.DoesNotExist">Product.DoesNotExist</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="catalog.html#catalog.models.Product.DoesNotExist">Product.DoesNotExist</a>
-</li>
       <li><a href="catalog.html#catalog.models.Product.MultipleObjectsReturned">Product.MultipleObjectsReturned</a>
-</li>
-      <li><a href="catalog.html#catalog.models.Listing.product_id">product_id (атрибут catalog.models.Listing)</a>
 </li>
       <li><a href="catalog.html#catalog.models.AttributeValue.product_set">product_set (атрибут catalog.models.AttributeValue)</a>
 </li>
-      <li><a href="catalog.html#catalog.models.Subcategory.products">products (атрибут catalog.models.Subcategory)</a>
+      <li><a href="catalog.html#catalog.models.Manufacturer.products">products (атрибут catalog.models.Manufacturer)</a>
+
+      <ul>
+        <li><a href="catalog.html#catalog.models.Specification.products">(атрибут catalog.models.Specification)</a>
 </li>
+        <li><a href="catalog.html#catalog.models.Subcategory.products">(атрибут catalog.models.Subcategory)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -537,12 +515,18 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="catalog.html#catalog.models.Base.save">save() (метод catalog.models.Base)</a>
-</li>
       <li><a href="catalog.html#catalog.admin.BaseAdmin.save_formset">save_formset() (метод catalog.admin.BaseAdmin)</a>
 </li>
       <li><a href="catalog.html#catalog.admin.BaseAdmin.save_model">save_model() (метод catalog.admin.BaseAdmin)</a>
 </li>
+      <li><a href="catalog.html#catalog.models.Category.short_title">short_title (атрибут catalog.models.Category)</a>
+
+      <ul>
+        <li><a href="catalog.html#catalog.models.Manufacturer.short_title">(атрибут catalog.models.Manufacturer)</a>
+</li>
+        <li><a href="catalog.html#catalog.models.Subcategory.short_title">(атрибут catalog.models.Subcategory)</a>
+</li>
+      </ul></li>
       <li><a href="catalog.html#catalog.models.Attribute.SOFT">SOFT (атрибут catalog.models.Attribute)</a>
 </li>
       <li><a href="catalog.html#catalog.models.Specification">Specification (класс в catalog.models)</a>
@@ -551,12 +535,12 @@
 </li>
       <li><a href="catalog.html#catalog.models.Specification.MultipleObjectsReturned">Specification.MultipleObjectsReturned</a>
 </li>
-      <li><a href="catalog.html#catalog.models.Listing.specification_set">specification_set (атрибут catalog.models.Listing)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="catalog.html#catalog.models.Product.specification_set">specification_set (атрибут catalog.models.Product)</a>
 </li>
       <li><a href="catalog.html#catalog.models.Category.subcategories">subcategories (атрибут catalog.models.Category)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="catalog.html#catalog.models.Attribute.subcategory">subcategory (атрибут catalog.models.Attribute)</a>
 
       <ul>
@@ -575,14 +559,6 @@
         <li><a href="catalog.html#catalog.models.Product.subcategory_id">(атрибут catalog.models.Product)</a>
 </li>
       </ul></li>
-      <li><a href="catalog.html#catalog.models.Category.synonyms">synonyms (атрибут catalog.models.Category)</a>
-
-      <ul>
-        <li><a href="catalog.html#catalog.models.Manufacturer.synonyms">(атрибут catalog.models.Manufacturer)</a>
-</li>
-        <li><a href="catalog.html#catalog.models.Subcategory.synonyms">(атрибут catalog.models.Subcategory)</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -597,8 +573,6 @@
         <li><a href="catalog.html#catalog.models.Category.title">(атрибут catalog.models.Category)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Manufacturer.title">(атрибут catalog.models.Manufacturer)</a>
-</li>
-        <li><a href="catalog.html#catalog.models.Product.title">(атрибут catalog.models.Product)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Specification.title">(атрибут catalog.models.Specification)</a>
 </li>
@@ -617,6 +591,8 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="catalog.html#catalog.models.Base.uid">uid (атрибут catalog.models.Base)</a>
+</li>
       <li><a href="catalog.html#catalog.models.Base.updated_at">updated_at (атрибут catalog.models.Base)</a>
 </li>
       <li><a href="catalog.html#catalog.models.Attribute.updated_by">updated_by (атрибут catalog.models.Attribute)</a>
@@ -627,8 +603,6 @@
         <li><a href="catalog.html#catalog.models.Base.updated_by">(атрибут catalog.models.Base)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Category.updated_by">(атрибут catalog.models.Category)</a>
-</li>
-        <li><a href="catalog.html#catalog.models.Listing.updated_by">(атрибут catalog.models.Listing)</a>
 </li>
         <li><a href="catalog.html#catalog.models.Manufacturer.updated_by">(атрибут catalog.models.Manufacturer)</a>
 </li>
@@ -702,7 +676,6 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/translations.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

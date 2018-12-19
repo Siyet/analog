@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Subcategory, Product, Manufacturer, Attribute, AttributeValue, Specification, Listing
+from .models import Category, Subcategory, Product, Manufacturer, Attribute, AttributeValue, Specification
 
 class BaseAdmin(admin.ModelAdmin):
     
@@ -18,7 +18,12 @@ class BaseAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(BaseAdmin):
-    list_display=['title','id','rev','is_public','deleted','created_at','created_by','updated_at','updated_by']
+    list_display=['title','uid','rev','is_public','deleted','created_at','created_by','updated_at','updated_by']
+
+
+class AttrAdmin(BaseAdmin):
+    list_display=['title', 'type', 'priority','subcategory','is_public', 'deleted']
+
 
 # class ListingAdmin(BaseAdmin):
 #     actions = None
@@ -38,8 +43,7 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Subcategory, BaseAdmin)
 admin.site.register(Product, BaseAdmin)
 admin.site.register(Manufacturer, BaseAdmin)
-admin.site.register(Attribute, BaseAdmin)
+admin.site.register(Attribute, AttrAdmin)
 admin.site.register(Specification, BaseAdmin)
-admin.site.register(Listing, BaseAdmin)
 
 # Register your models here.

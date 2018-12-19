@@ -151,7 +151,7 @@
   <h1>Исходный код catalog.admin</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
 
-<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Category</span><span class="p">,</span> <span class="n">Subcategory</span><span class="p">,</span> <span class="n">Product</span><span class="p">,</span> <span class="n">Manufacturer</span><span class="p">,</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">AttributeValue</span><span class="p">,</span> <span class="n">Specification</span><span class="p">,</span> <span class="n">Listing</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="k">import</span> <span class="n">Category</span><span class="p">,</span> <span class="n">Subcategory</span><span class="p">,</span> <span class="n">Product</span><span class="p">,</span> <span class="n">Manufacturer</span><span class="p">,</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">AttributeValue</span><span class="p">,</span> <span class="n">Specification</span>
 
 <div class="viewcode-block" id="BaseAdmin"><a class="viewcode-back" href="../../catalog.html#catalog.admin.BaseAdmin">[документация]</a><span class="k">class</span> <span class="nc">BaseAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
     
@@ -169,7 +169,12 @@
 
 
 <div class="viewcode-block" id="CategoryAdmin"><a class="viewcode-back" href="../../catalog.html#catalog.admin.CategoryAdmin">[документация]</a><span class="k">class</span> <span class="nc">CategoryAdmin</span><span class="p">(</span><span class="n">BaseAdmin</span><span class="p">):</span>
-    <span class="n">list_display</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;rev&#39;</span><span class="p">,</span><span class="s1">&#39;is_public&#39;</span><span class="p">,</span><span class="s1">&#39;deleted&#39;</span><span class="p">,</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;created_by&#39;</span><span class="p">,</span><span class="s1">&#39;updated_at&#39;</span><span class="p">,</span><span class="s1">&#39;updated_by&#39;</span><span class="p">]</span></div>
+    <span class="n">list_display</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;uid&#39;</span><span class="p">,</span><span class="s1">&#39;rev&#39;</span><span class="p">,</span><span class="s1">&#39;is_public&#39;</span><span class="p">,</span><span class="s1">&#39;deleted&#39;</span><span class="p">,</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;created_by&#39;</span><span class="p">,</span><span class="s1">&#39;updated_at&#39;</span><span class="p">,</span><span class="s1">&#39;updated_by&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="AttrAdmin"><a class="viewcode-back" href="../../catalog.html#catalog.admin.AttrAdmin">[документация]</a><span class="k">class</span> <span class="nc">AttrAdmin</span><span class="p">(</span><span class="n">BaseAdmin</span><span class="p">):</span>
+    <span class="n">list_display</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;priority&#39;</span><span class="p">,</span><span class="s1">&#39;subcategory&#39;</span><span class="p">,</span><span class="s1">&#39;is_public&#39;</span><span class="p">,</span> <span class="s1">&#39;deleted&#39;</span><span class="p">]</span></div>
+
 
 <span class="c1"># class ListingAdmin(BaseAdmin):</span>
 <span class="c1">#     actions = None</span>
@@ -189,9 +194,8 @@
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Subcategory</span><span class="p">,</span> <span class="n">BaseAdmin</span><span class="p">)</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Product</span><span class="p">,</span> <span class="n">BaseAdmin</span><span class="p">)</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Manufacturer</span><span class="p">,</span> <span class="n">BaseAdmin</span><span class="p">)</span>
-<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Attribute</span><span class="p">,</span> <span class="n">BaseAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Attribute</span><span class="p">,</span> <span class="n">AttrAdmin</span><span class="p">)</span>
 <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Specification</span><span class="p">,</span> <span class="n">BaseAdmin</span><span class="p">)</span>
-<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Listing</span><span class="p">,</span> <span class="n">BaseAdmin</span><span class="p">)</span>
 
 <span class="c1"># Register your models here.</span>
 </pre></div>
@@ -232,7 +236,6 @@
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/translations.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

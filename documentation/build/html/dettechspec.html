@@ -391,6 +391,7 @@ update, delete —
 <p>Удаление экземпляра данной сущности должен отправлять его в архив. В архив
 также должны быть отправлены все товары данного производителя. Записи
 архива не участвуют в подборе аналогов.</p>
+<p>Данная сущность носит справочный характер. Предполагается что изменения в перечень её экземпляров будут вноситься редко.</p>
 <dl class="docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -403,6 +404,7 @@ update, delete —
 </tr>
 <tr class="field-even field"><th class="field-name">5.1.2:</th><td class="field-body"><p class="first"><strong>Класс</strong></p>
 <p>Экземпляром сущности <em>класс</em> является крупная товарная категория.</p>
+<p>Данная сущность носит справочный характер. Предполагается что изменения в перечень её экземпляров будут вноситься редко.</p>
 <dl class="docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -417,6 +419,7 @@ update, delete —
 <tr class="field-odd field"><th class="field-name">5.1.3:</th><td class="field-body"><p class="first"><strong>Подкласс</strong></p>
 <p>Подгруппа товаров внутри каждого класса, для более удобного поиска и классификации.
 Внутри одного <em>Подкласса</em> каждого <em>Класса</em> задействованы одинаковые <em>Атрибуты</em> для всех позиций.</p>
+<p>Данная сущность носит справочный характер. Предполагается что изменения в перечень её экземпляров будут вноситься редко.</p>
 <dl class="docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -430,6 +433,7 @@ update, delete —
 </tr>
 <tr class="field-even field"><th class="field-name">5.1.4:</th><td class="field-body"><p class="first"><strong>Атрибут</strong></p>
 <p>Экземпляром сущности <em>атрибут</em> является характеристика <em>товара</em>.</p>
+<p>Данная сущность носит справочный характер. Предполагается что изменения в перечень её экземпляров будут вноситься редко.</p>
 <dl class="docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -500,30 +504,25 @@ update, delete —
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="3%" />
-<col width="5%" />
-<col width="3%" />
-<col width="6%" />
-<col width="5%" />
-<col width="5%" />
-<col width="5%" />
-<col width="9%" />
 <col width="4%" />
 <col width="6%" />
+<col width="4%" />
 <col width="8%" />
-<col width="3%" />
-<col width="3%" />
-<col width="4%" />
 <col width="6%" />
-<col width="4%" />
-<col width="9%" />
 <col width="6%" />
-<col width="3%" />
-<col width="3%" />
+<col width="6%" />
+<col width="11%" />
+<col width="5%" />
+<col width="7%" />
+<col width="10%" />
+<col width="5%" />
+<col width="7%" />
+<col width="11%" />
+<col width="4%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td colspan="4">&#160;</td>
-<td colspan="16">атрибуты</td>
+<td colspan="11">атрибуты</td>
 </tr>
 <tr class="row-even"><td colspan="4">&#160;</td>
 <td>А1</td>
@@ -533,18 +532,13 @@ update, delete —
 <td>А5</td>
 <td>B1</td>
 <td>B2</td>
-<td>B3</td>
-<td>B4</td>
 <td>C1</td>
 <td>C2</td>
-<td>C3</td>
 <td>D1</td>
-<td>D2</td>
 <td>E1</td>
-<td>E2</td>
 </tr>
 <tr class="row-odd"><td colspan="4">&#160;</td>
-<td colspan="16">тип атрибута</td>
+<td colspan="11">тип атрибута</td>
 </tr>
 <tr class="row-even"><td colspan="4">ключевые параметры записи</td>
 <td>жесткий</td>
@@ -554,18 +548,13 @@ update, delete —
 <td>жесткий</td>
 <td>мягкий</td>
 <td>мягкий</td>
-<td>мягкий</td>
-<td>мягкий</td>
 <td>пересчет</td>
 <td>пересчет</td>
-<td>пересчет</td>
-<td>взаимосвязь</td>
 <td>взаимосвязь</td>
 <td>цена 1</td>
-<td>цена 2</td>
 </tr>
 <tr class="row-odd"><td colspan="4">&#160;</td>
-<td colspan="16">пользовательское название артибута для конкретного класса</td>
+<td colspan="11">пользовательское название артибута для конкретного класса</td>
 </tr>
 <tr class="row-even"><td>класс</td>
 <td>подкласс</td>
@@ -578,15 +567,10 @@ update, delete —
 <td>резерв</td>
 <td>толщина, мм</td>
 <td>высота борта, мм</td>
-<td>резерв</td>
-<td>резерв</td>
 <td>длина,мм</td>
 <td>ед.изм.</td>
-<td>резерв</td>
 <td>крепление</td>
-<td>резерв</td>
 <td>руб.</td>
-<td>резерв</td>
 </tr>
 <tr class="row-odd"><td>КНС</td>
 <td>прямая
@@ -600,15 +584,10 @@ update, delete —
 <td>&#160;</td>
 <td>0,8</td>
 <td>80</td>
-<td>&#160;</td>
-<td>&#160;</td>
 <td>3000</td>
 <td>штуки/метры</td>
-<td>&#160;</td>
 <td>компл.соединителя,
 1шт, арт ХХХ</td>
-<td>&#160;</td>
-<td>&#160;</td>
 <td>&#160;</td>
 </tr>
 <tr class="row-even"><td>класс</td>
@@ -622,15 +601,10 @@ update, delete —
 <td>класс IP</td>
 <td>корпус</td>
 <td>резерв</td>
-<td>резерв</td>
-<td>резерв</td>
 <td>длина,мм</td>
 <td>штуки/метры</td>
 <td>резерв</td>
-<td>резерв</td>
-<td>резерв</td>
 <td>руб.</td>
-<td>резерв</td>
 </tr>
 <tr class="row-odd"><td>ШП</td>
 <td>поворотный
@@ -649,11 +623,6 @@ update, delete —
 <td>&#160;</td>
 <td>&#160;</td>
 <td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -664,6 +633,7 @@ update, delete —
 <tr class="field-odd field"><th class="field-name">5.1.5:</th><td class="field-body"><p class="first"><strong>Значение атрибута</strong></p>
 <p>Экземпляр сущности <em>значение атрибута</em> представляет собой значение одного
 атрибута одного из товаров.</p>
+<p>Данная сущность является рабочей. Предполагаются частые изменения перечня её экземпляров.</p>
 <dl class="docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -679,6 +649,7 @@ update, delete —
 <p>Экземпляр сущности <em>товар</em> принадлежит какому-либо <em>производителю</em> и только одному.</p>
 <p>Удаление экземпляра данной сущности должен отправлять его в архив. Записи
 архива не участвуют в подборе аналогов.</p>
+<p>Данная сущность является рабочей. Предполагаются частые изменения перечня её экземпляров.</p>
 <dl class="docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -693,6 +664,7 @@ update, delete —
 </tr>
 <tr class="field-odd field"><th class="field-name">5.1.7:</th><td class="field-body"><p class="first"><strong>Спецификация</strong></p>
 <p>Экземпляр сущности <em>спецификация</em> представляет собой загружаемую группу товаров с целью поиска их аналогов.</p>
+<p><em>Спецификация</em> является основной рабочей сущностью. Предполагаются очень частые изменения перечня её экземпляров.</p>
 <dl class="last docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -713,6 +685,7 @@ update, delete —
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">5.2.1:</th><td class="field-body"><p class="first"><strong>Пользователь</strong></p>
+<p>Данная сущность носит системный характер. Предполагается что изменения в перечень её экземпляров будут вноситься редко.</p>
 <dl class="docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -727,6 +700,7 @@ update, delete —
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">5.2.2:</th><td class="field-body"><p class="first"><strong>Группы пользователей</strong></p>
+<p>Данная сущность носит системный характер. Предполагается что изменения в перечень её экземпляров будут вноситься очень редко.</p>
 <dl class="last docutils">
 <dt>Поля</dt>
 <dd><ul class="first last simple">
@@ -1012,7 +986,6 @@ update, delete —
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/translations.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
