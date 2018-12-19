@@ -2,7 +2,21 @@ from django.contrib import admin
 
 from .models import Category, Subcategory, Product, Manufacturer, Attribute, AttributeValue, Specification
 
+def mark_as_published(modeladmin, request, queryset):
+    queryset.update(is_public=True)
+mark_as_published.short_description = u"Опубликовать"
+
+def mark_as_unpublished(modeladmin, request, queryset):
+    queryset.update(is_public=False)
+mark_as_unpublished.short_description = u"Снять с публикации"
+
+
 class BaseAdmin(admin.ModelAdmin):
+
+    list_display = ['title', 'is_public', 'deleted','created_at','created_by','updated_at','updated_by']
+    save_on_top = True
+    actions = [mark_as_published, mark_as_unpublished]
+    list_filter = ['is_public', 'deleted','created_at','updated_at']
     
     def save_model(self, request, obj, form, change): 
         if not change:
@@ -13,17 +27,31 @@ class BaseAdmin(admin.ModelAdmin):
     def save_formset(self, request, form, formset, change):
         instances = formset.save(commit=False)
         for instance in instances:
+            if not change:
+                instance.created_by = request.user
             instance.updated_by = request.user
             instance.save()
 
 
+class SubCatValInline(admin.TabularInline):
+    model = Subcategory
+
+
 class CategoryAdmin(BaseAdmin):
-    list_display=['title','uid','rev','is_public','deleted','created_at','created_by','updated_at','updated_by']
+    inlines=[SubCatValInline]
 
 
 class AttrAdmin(BaseAdmin):
     list_display=['title', 'type', 'priority','subcategory','is_public', 'deleted']
 
+
+class AttrValInline(admin.TabularInline):
+    model = AttributeValue
+
+
+class ProductAdmin(BaseAdmin):
+    list_display=['article', 'manufacturer', 'subcategory','is_public', 'deleted']
+    inlines = [AttrValInline]
 
 # class ListingAdmin(BaseAdmin):
 #     actions = None
@@ -41,7 +69,7 @@ class AttrAdmin(BaseAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Subcategory, BaseAdmin)
-admin.site.register(Product, BaseAdmin)
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Manufacturer, BaseAdmin)
 admin.site.register(Attribute, AttrAdmin)
 admin.site.register(Specification, BaseAdmin)

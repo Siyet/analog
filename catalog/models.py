@@ -12,12 +12,12 @@ class Base(models.Model):
     """
     Абстрактная базовая модель
     """
-    uid = models.UUIDField(verbose_name="Когда создано", primary_key=True, default=uuid.uuid4, editable=False)
+    uid = models.UUIDField(verbose_name="Идентификатор", primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Когда создано")
     created_by = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Кем создано", editable=False, related_name="+")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Когда обновлено")
     updated_by = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Кем обновлено", editable=False, related_name="+")
-    is_public = models.BooleanField("Опубликовано?", default=False)
+    is_public = models.BooleanField("Опубликовано?", default=True)
     deleted = models.BooleanField("В архиве?", default=False, editable=False)
     rev = models.CharField("Ревизия", default='1-{0}'.format(uuid.uuid4()), max_length=38, editable=False)
     # json-delta пакет для работы с разностью в json; json_patch - функция пакета для применения изменений.
@@ -88,8 +88,8 @@ class Subcategory(Base):
         return self.category.title + ' -> ' + self.title
 
     class Meta:
-        verbose_name = "Вид (подкласс)"
-        verbose_name_plural = "Виды (подклассы)"
+        verbose_name = "Подкласс"
+        verbose_name_plural = "Подклассы"
 
 
 class Attribute(Base):
@@ -122,33 +122,36 @@ class Attribute(Base):
         verbose_name_plural = "Атрибуты"
 
 
-class AttributeValue(Base):
-    """
-    Модель значения атрибута
-    """
-    title = models.CharField(max_length=255, verbose_name='Значение')
-    attribute = models.ForeignKey(Attribute, on_delete=models.PROTECT, verbose_name="Атрибут", related_name="values")
-
-    class Meta:
-        verbose_name = "Значение атрибута"
-        verbose_name_plural = "Значения атрибутов"
-
-
 class Product(Base):
     """
     Модель товара
     """
     article = models.CharField(max_length=255, verbose_name='Артикул')
     subcategory = models.ForeignKey(Subcategory, on_delete=models.PROTECT, verbose_name="Вид", related_name='products')
-    attrs_values = models.ManyToManyField(AttributeValue, verbose_name="Атрибуты")
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.PROTECT, verbose_name="Производитель", related_name='products')
 
     def __str__(self):
         return self.article
 
+    def title(self):
+        return self.article
+
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
+
+
+class AttributeValue(Base):
+    """
+    Модель значения атрибута
+    """
+    title = models.CharField(max_length=255, verbose_name='Значение')
+    attribute = models.ForeignKey(Attribute, on_delete=models.PROTECT, verbose_name="Атрибут", related_name="values")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Атрибуты", related_name="attrs_values")
+
+    class Meta:
+        verbose_name = "Значение атрибута"
+        verbose_name_plural = "Значения атрибутов"
 
 
 class Specification(Base):

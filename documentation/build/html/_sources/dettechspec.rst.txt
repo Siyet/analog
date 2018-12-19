@@ -86,7 +86,7 @@
 
 **Блок-схема алгоритма подбора замены:**
 
-.. image:: _static/Алгоритм.jpg
+.. image:: https://raw.githubusercontent.com/Siyet/analog/master/documentation/source/_static/Алгоритм.jpg
 
 :Шаг 4: Сохранение результатов
   
@@ -141,7 +141,7 @@
 
 **Пример реализации АРМа Администратора**
 
-.. image:: _static/Админ_панель.png
+.. image:: https://raw.githubusercontent.com/Siyet/analog/master/documentation/source/_static/Админ_панель.png
 
 5. Сущности
 -----------
@@ -386,6 +386,8 @@
 - При большом количестве строк - разбиение на страницы.
 - Импорт данных из XLS. При импорте в обязательном порядке должны осуществляться проверка на корректность импортируемых сведений и устранение задвоений.
 - Экспорт данных в XLS.
+
+.. image:: https://raw.githubusercontent.com/Siyet/analog/master/documentation/source/_static/Табличное_представление.jpg
 
 6.2 карточка экземпляра сущности
 --------------------------------
