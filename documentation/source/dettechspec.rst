@@ -362,6 +362,8 @@
     - Наименование
     - Права
 
+.. image:: https://raw.githubusercontent.com/Siyet/analog/master/documentation/source/_static/Назначение_прав.jpg
+
 6. Представления
 ----------------
 

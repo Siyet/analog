@@ -209,10 +209,43 @@
 </dd></dl>
 
 <dl class="class">
+<dt id="catalog.admin.AttrValInline">
+<em class="property">class </em><code class="descclassname">catalog.admin.</code><code class="descname">AttrValInline</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/admin.html#AttrValInline"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.admin.AttrValInline" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.TabularInline</span></code></div></blockquote>
+<dl class="attribute">
+<dt id="catalog.admin.AttrValInline.media">
+<code class="descname">media</code><a class="headerlink" href="#catalog.admin.AttrValInline.media" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.admin.AttrValInline.model">
+<code class="descname">model</code><a class="headerlink" href="#catalog.admin.AttrValInline.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="#catalog.models.AttributeValue" title="catalog.models.AttributeValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">catalog.models.AttributeValue</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="catalog.admin.BaseAdmin">
 <em class="property">class </em><code class="descclassname">catalog.admin.</code><code class="descname">BaseAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/admin.html#BaseAdmin"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.admin.BaseAdmin" title="Ссылка на это определение">¶</a></dt>
 <dd><blockquote>
 <div>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.ModelAdmin</span></code></div></blockquote>
+<dl class="attribute">
+<dt id="catalog.admin.BaseAdmin.actions">
+<code class="descname">actions</code><em class="property"> = [&lt;function mark_as_published&gt;, &lt;function mark_as_unpublished&gt;]</em><a class="headerlink" href="#catalog.admin.BaseAdmin.actions" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.admin.BaseAdmin.list_display">
+<code class="descname">list_display</code><em class="property"> = ['title', 'is_public', 'deleted', 'created_at', 'created_by', 'updated_at', 'updated_by']</em><a class="headerlink" href="#catalog.admin.BaseAdmin.list_display" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.admin.BaseAdmin.list_filter">
+<code class="descname">list_filter</code><em class="property"> = ['is_public', 'deleted', 'created_at', 'updated_at']</em><a class="headerlink" href="#catalog.admin.BaseAdmin.list_filter" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="catalog.admin.BaseAdmin.media">
 <code class="descname">media</code><a class="headerlink" href="#catalog.admin.BaseAdmin.media" title="Ссылка на это определение">¶</a></dt>
@@ -230,6 +263,11 @@
 <dd><p>Given a model instance save it to the database.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="catalog.admin.BaseAdmin.save_on_top">
+<code class="descname">save_on_top</code><em class="property"> = True</em><a class="headerlink" href="#catalog.admin.BaseAdmin.save_on_top" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -238,8 +276,8 @@
 <dd><blockquote>
 <div>Базовые классы: <a class="reference internal" href="#catalog.admin.BaseAdmin" title="catalog.admin.BaseAdmin"><code class="xref py py-class docutils literal notranslate"><span class="pre">catalog.admin.BaseAdmin</span></code></a></div></blockquote>
 <dl class="attribute">
-<dt id="catalog.admin.CategoryAdmin.list_display">
-<code class="descname">list_display</code><em class="property"> = ['title', 'uid', 'rev', 'is_public', 'deleted', 'created_at', 'created_by', 'updated_at', 'updated_by']</em><a class="headerlink" href="#catalog.admin.CategoryAdmin.list_display" title="Ссылка на это определение">¶</a></dt>
+<dt id="catalog.admin.CategoryAdmin.inlines">
+<code class="descname">inlines</code><em class="property"> = [&lt;class 'catalog.admin.SubCatValInline'&gt;]</em><a class="headerlink" href="#catalog.admin.CategoryAdmin.inlines" title="Ссылка на это определение">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -249,29 +287,84 @@
 
 </dd></dl>
 
+<dl class="class">
+<dt id="catalog.admin.ProductAdmin">
+<em class="property">class </em><code class="descclassname">catalog.admin.</code><code class="descname">ProductAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/admin.html#ProductAdmin"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.admin.ProductAdmin" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div>Базовые классы: <a class="reference internal" href="#catalog.admin.BaseAdmin" title="catalog.admin.BaseAdmin"><code class="xref py py-class docutils literal notranslate"><span class="pre">catalog.admin.BaseAdmin</span></code></a></div></blockquote>
+<dl class="attribute">
+<dt id="catalog.admin.ProductAdmin.inlines">
+<code class="descname">inlines</code><em class="property"> = [&lt;class 'catalog.admin.AttrValInline'&gt;]</em><a class="headerlink" href="#catalog.admin.ProductAdmin.inlines" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.admin.ProductAdmin.list_display">
+<code class="descname">list_display</code><em class="property"> = ['article', 'manufacturer', 'subcategory', 'is_public', 'deleted']</em><a class="headerlink" href="#catalog.admin.ProductAdmin.list_display" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.admin.ProductAdmin.media">
+<code class="descname">media</code><a class="headerlink" href="#catalog.admin.ProductAdmin.media" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="catalog.admin.SubCatValInline">
+<em class="property">class </em><code class="descclassname">catalog.admin.</code><code class="descname">SubCatValInline</code><span class="sig-paren">(</span><em>parent_model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/admin.html#SubCatValInline"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.admin.SubCatValInline" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.admin.options.TabularInline</span></code></div></blockquote>
+<dl class="attribute">
+<dt id="catalog.admin.SubCatValInline.media">
+<code class="descname">media</code><a class="headerlink" href="#catalog.admin.SubCatValInline.media" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.admin.SubCatValInline.model">
+<code class="descname">model</code><a class="headerlink" href="#catalog.admin.SubCatValInline.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="#catalog.models.Subcategory" title="catalog.models.Subcategory"><code class="xref py py-class docutils literal notranslate"><span class="pre">catalog.models.Subcategory</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="catalog.admin.mark_as_published">
+<code class="descclassname">catalog.admin.</code><code class="descname">mark_as_published</code><span class="sig-paren">(</span><em>modeladmin</em>, <em>request</em>, <em>queryset</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/admin.html#mark_as_published"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.admin.mark_as_published" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="catalog.admin.mark_as_unpublished">
+<code class="descclassname">catalog.admin.</code><code class="descname">mark_as_unpublished</code><span class="sig-paren">(</span><em>modeladmin</em>, <em>request</em>, <em>queryset</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/admin.html#mark_as_unpublished"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.admin.mark_as_unpublished" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="module-catalog.apps">
 <span id="catalog-apps-module"></span><h2>catalog.apps module<a class="headerlink" href="#module-catalog.apps" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="class">
+<dt id="catalog.apps.AnalogAuthConfig">
+<em class="property">class </em><code class="descclassname">catalog.apps.</code><code class="descname">AnalogAuthConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/apps.html#AnalogAuthConfig"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.apps.AnalogAuthConfig" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.apps.AuthConfig</span></code></div></blockquote>
+<dl class="attribute">
+<dt id="catalog.apps.AnalogAuthConfig.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Функционал системного администратора'</em><a class="headerlink" href="#catalog.apps.AnalogAuthConfig.verbose_name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="catalog.apps.CatalogConfig">
 <em class="property">class </em><code class="descclassname">catalog.apps.</code><code class="descname">CatalogConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/apps.html#CatalogConfig"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.apps.CatalogConfig" title="Ссылка на это определение">¶</a></dt>
 <dd><blockquote>
 <div>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></div></blockquote>
-<dl class="class">
-<dt id="catalog.apps.CatalogConfig.Meta">
-<em class="property">class </em><code class="descname">Meta</code><a class="reference internal" href="_modules/catalog/apps.html#CatalogConfig.Meta"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.apps.CatalogConfig.Meta" title="Ссылка на это определение">¶</a></dt>
-<dd><blockquote>
-<div>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></div></blockquote>
-<dl class="attribute">
-<dt id="catalog.apps.CatalogConfig.Meta.verbose_name">
-<code class="descname">verbose_name</code><em class="property"> = 'Функционал прикладного администратора'</em><a class="headerlink" href="#catalog.apps.CatalogConfig.Meta.verbose_name" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="attribute">
 <dt id="catalog.apps.CatalogConfig.name">
 <code class="descname">name</code><em class="property"> = 'catalog'</em><a class="headerlink" href="#catalog.apps.CatalogConfig.name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.apps.CatalogConfig.verbose_name">
+<code class="descname">verbose_name</code><em class="property"> = 'Функционал прикладного администратора'</em><a class="headerlink" href="#catalog.apps.CatalogConfig.verbose_name" title="Ссылка на это определение">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -523,19 +616,23 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="catalog.models.AttributeValue.product_set">
-<code class="descname">product_set</code><a class="headerlink" href="#catalog.models.AttributeValue.product_set" title="Ссылка на это определение">¶</a></dt>
-<dd><p>Accessor to the related objects manager on the forward and reverse sides of
-a many-to-many relation.</p>
+<dt id="catalog.models.AttributeValue.product">
+<code class="descname">product</code><a class="headerlink" href="#catalog.models.AttributeValue.product" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <p>In the example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
-instances.</p>
-<p>Most of the implementation is delegated to a dynamically defined manager
-class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="catalog.models.AttributeValue.product_id">
+<code class="descname">product_id</code><a class="headerlink" href="#catalog.models.AttributeValue.product_id" title="Ссылка на это определение">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -931,15 +1028,14 @@ object the first time, the query is executed.</p>
 <dl class="attribute">
 <dt id="catalog.models.Product.attrs_values">
 <code class="descname">attrs_values</code><a class="headerlink" href="#catalog.models.Product.attrs_values" title="Ссылка на это определение">¶</a></dt>
-<dd><p>Accessor to the related objects manager on the forward and reverse sides of
-a many-to-many relation.</p>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
 <p>In the example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
-instances.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
 <p>Most of the implementation is delegated to a dynamically defined manager
 class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
 </dd></dl>
@@ -1037,6 +1133,11 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="catalog.models.Product.title">
+<code class="descname">title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/catalog/models.html#Product.title"><span class="viewcode-link">[исходный код]</span></a><a class="headerlink" href="#catalog.models.Product.title" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="catalog.models.Product.updated_by">
