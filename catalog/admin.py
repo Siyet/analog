@@ -13,7 +13,7 @@ mark_as_unpublished.short_description = u"Снять с публикации"
 
 class BaseAdmin(admin.ModelAdmin):
 
-    list_display = ['title', 'is_public', 'deleted','created_at','created_by','updated_at','updated_by']
+    list_display = ['uid','title', 'is_public', 'deleted','created_at','created_by','updated_at','updated_by']
     save_on_top = True
     actions = [mark_as_published, mark_as_unpublished]
     list_filter = ['is_public', 'deleted','created_at','updated_at']
@@ -42,7 +42,7 @@ class CategoryAdmin(BaseAdmin):
 
 
 class AttrAdmin(BaseAdmin):
-    list_display=['title', 'type', 'priority','subcategory','is_public', 'deleted']
+    list_display=['uid','title', 'type', 'priority','subcategory','is_public', 'deleted']
 
 
 class AttrValInline(admin.TabularInline):
@@ -50,7 +50,7 @@ class AttrValInline(admin.TabularInline):
 
 
 class ProductAdmin(BaseAdmin):
-    list_display=['article', 'manufacturer', 'subcategory','is_public', 'deleted']
+    list_display=['uid','article', 'manufacturer', 'subcategory','is_public', 'deleted']
     inlines = [AttrValInline]
 
 # class ListingAdmin(BaseAdmin):

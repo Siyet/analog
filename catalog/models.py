@@ -78,7 +78,7 @@ class Category(Base):
 
 class Subcategory(Base):
     """
-    Модель вида (подкласса) товаров
+    Модель Пподкласса товаров
     """
     title = models.CharField(max_length=255, verbose_name='Наименование')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Класс", related_name='subcategories')
@@ -127,7 +127,7 @@ class Product(Base):
     Модель товара
     """
     article = models.CharField(max_length=255, verbose_name='Артикул')
-    subcategory = models.ForeignKey(Subcategory, on_delete=models.PROTECT, verbose_name="Вид", related_name='products')
+    subcategory = models.ForeignKey(Subcategory, on_delete=models.PROTECT, verbose_name="Подкласс", related_name='products')
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.PROTECT, verbose_name="Производитель", related_name='products')
 
     def __str__(self):
