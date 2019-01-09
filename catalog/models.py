@@ -3,7 +3,7 @@
 """
 
 from django.db import models
-import uuid
+# import uuid
 from django.contrib.auth.models import User
 from django.utils import timezone
 
@@ -54,7 +54,7 @@ class Category(Base):
     """
     Модель класса товаров
     """
-    parent = models.ForeignKey('self', on_delete=models.PROTECT, verbose_name="Родительский класс", related_name='childs')
+    parent = models.ForeignKey('self', on_delete=models.PROTECT, verbose_name="Родительский класс", related_name='childs', blank=True, null=True)
     childs = None
     title = models.CharField(max_length=255, verbose_name='Наименование')
     short_title = models.CharField(max_length=255, verbose_name='Краткое наименование', blank=True)
@@ -70,7 +70,12 @@ class Category(Base):
         return attrs
 
     def __str__(self):
-        return self.title
+        text = ""
+        if self.parent:
+            text += self.parent.short_title if self.parent.short_title else self.parent.title
+            text += ' -> '
+        text += self.title
+        return text
 
     class Meta:
         verbose_name = "Класс"
@@ -109,37 +114,33 @@ class Attribute(Base):
         (RELATION,      'Взаимосвязь'),
         (PRICE,         'Цена')
     )
+    UNITS = (
+        ('mm', 'мм'),
+        ('cm', 'см'),
+        ('m', 'м'),
+        ('km', 'км'),
+        ('g', 'гр'),
+        ('kg', 'кг'),
+        ('tonne', 'т')
+    )
 
     title = models.CharField(max_length=255, verbose_name='Наименование')
     type = models.CharField(max_length=13, choices=TYPES, verbose_name="Тип")
+    unit = models.CharField(max_length=5, choices=UNITS, verbose_name="Единицы измерения", blank=True)
     priority = models.PositiveSmallIntegerField(verbose_name='Приоритет')
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Класс", related_name='attributes')
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Класс", related_name='attributes', limit_choices_to={'parent__isnull': False})
     
     def __str__(self):
-        return self.title
+        text = self.title
+        if self.unit:
+            for unit in self.UNITS:
+                if self.unit == unit[0]:
+                    text += ', ' + unit[1]
+        return text
 
     class Meta:
         verbose_name = "Атрибут"
         verbose_name_plural = "Атрибуты"
-
-
-class Product(Base):
-    """
-    Модель товара
-    """
-    article = models.CharField(max_length=255, verbose_name='Артикул')
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Класс", related_name='products')
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.PROTECT, verbose_name="Производитель", related_name='products')
-
-    def __str__(self):
-        return self.article
-
-    def title(self):
-        return self.article
-
-    class Meta:
-        verbose_name = "Товар"
-        verbose_name_plural = "Товары"
 
 
 class AttributeValue(Base):
@@ -147,13 +148,41 @@ class AttributeValue(Base):
     Модель значения атрибута
     """
     title = models.CharField(max_length=255, verbose_name='Значение')
-    product = 
     attribute = models.ForeignKey(Attribute, on_delete=models.PROTECT, verbose_name="Атрибут", related_name="values")
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Атрибуты", related_name="attrs_values")
-
+    products = models.ManyToManyField('Product', blank=True)
+    
+    def __str__(self):
+        return str(self.attribute) + ": " + self.title
+    
     class Meta:
         verbose_name = "Значение атрибута"
         verbose_name_plural = "Значения атрибутов"
+
+
+class Product(Base):
+    """
+    Модель товара
+    """
+    title = models.CharField(max_length=255, verbose_name='Наименование')
+    article = models.CharField(max_length=255, verbose_name='Артикул')
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Класс", related_name='products', limit_choices_to={'parent__isnull': False})
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.PROTECT, verbose_name="Производитель", related_name='products')
+    attrs_vals = models.ManyToManyField('AttributeValue', verbose_name="Атрибуты")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
+
+
+# class ProductProperty(Base):
+#     """
+#     Модель, связующая товар и атрибут и его значение
+#     """
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+#     attribute_value = models.ForeignKey(AttributeValue, on_delete=models.CASCADE)
 
 
 class Specification(Base):

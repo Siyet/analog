@@ -1,6 +1,7 @@
 from django.contrib import admin
+from .models import Category, Product, Manufacturer, Attribute, AttributeValue, Specification
+import json
 
-from .models import Category, Subcategory, Product, Manufacturer, Attribute, AttributeValue, Specification
 
 def mark_as_published(modeladmin, request, queryset):
     queryset.update(is_public=True)
@@ -13,10 +14,11 @@ mark_as_unpublished.short_description = u"Снять с публикации"
 
 class BaseAdmin(admin.ModelAdmin):
 
-    list_display = ['uid','title', 'is_public', 'deleted','created_at','created_by','updated_at','updated_by']
+    list_display = ['title', 'id','is_public', 'deleted','created_at','created_by','updated_at','updated_by']
     save_on_top = True
     actions = [mark_as_published, mark_as_unpublished]
     list_filter = ['is_public', 'deleted','created_at','updated_at']
+    search_fields = ['id', 'title']
     
     def save_model(self, request, obj, form, change): 
         if not change:
@@ -34,24 +36,37 @@ class BaseAdmin(admin.ModelAdmin):
 
 
 class SubCatValInline(admin.TabularInline):
-    model = Subcategory
+    model = Category
 
 
 class CategoryAdmin(BaseAdmin):
+    autocomplete_fields = ['parent']
     inlines=[SubCatValInline]
 
 
 class AttrAdmin(BaseAdmin):
-    list_display=['uid','title', 'type', 'priority','subcategory','is_public', 'deleted']
+    list_display=['title', 'unit', 'id', 'type', 'priority','category','is_public', 'deleted']
+    autocomplete_fields = ['category']
 
 
-class AttrValInline(admin.TabularInline):
-    model = AttributeValue
+class AttrValAdmin(BaseAdmin):
+    list_display=['title', 'attribute', 'id', 'is_public', 'deleted']
+    
+    autocomplete_fields = ['attribute']
+    exclude= ('products',)
+    
+    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
+    #     if db_field.name == "attribute":
+    #         print(json.dumps(kwargs, indent=2))
+    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 class ProductAdmin(BaseAdmin):
-    list_display=['uid','article', 'manufacturer', 'subcategory','is_public', 'deleted']
-    inlines = [AttrValInline]
+    list_display=['title','id','article', 'manufacturer', 'category','is_public', 'deleted']
+    # inlines = [PropertiesInline]
+    filter_horizontal = ['attrs_vals']
+    autocomplete_fields = ['category', 'manufacturer','attrs_vals']
+    # exclude = ('attrs_vals', )
 
 # class ListingAdmin(BaseAdmin):
 #     actions = None
@@ -68,7 +83,7 @@ class ProductAdmin(BaseAdmin):
 # TODO экспорт в формат xls https://xlsxwriter.readthedocs.io/index.html 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Subcategory, BaseAdmin)
+admin.site.register(AttributeValue, AttrValAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Manufacturer, BaseAdmin)
 admin.site.register(Attribute, AttrAdmin)
